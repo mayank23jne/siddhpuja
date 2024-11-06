@@ -1,0 +1,314 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.main-logo{
+	width: 90px;
+	position: absolute;
+	right: 0;
+	left: 0;
+	margin: -18px auto;
+}
+ion-menu {
+  --ion-text-color: var(--ion-color-danger-contrast);
+
+}
+.swiper-pagination-bullet-active {
+	background: red;
+	opacity: 1;
+}
+.list-button{
+	padding: 9px;
+}
+.customBorder.custom_edit {
+    padding-bottom: 4px !important;
+}
+.text-center {
+    text-align: center !important;
+}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.imghome {
+height: 100px;
+    width: 100px;
+    border-radius: 5px;
+    object-fit: cover;
+    object-position: top;
+    
+    //height: 90px;
+	//width: 90px;
+    // border-radius: 5px;
+    //margin-top: 0.5rem;
+	//object-fit: cover;
+}
+span:focus {
+   outline:none !important;
+    }
+
+.imghome_home {
+    height: 90px;
+	width: 90px;
+    border-radius: 5px;
+	margin-bottom: -14px;
+    margin-top: 9px;
+	object-fit: cover;
+}
+.hometxt {
+    font-size: 12px !important;
+    
+    color: red !important;
+    margin-bottom: -11px !important;
+    line-height: 19px;
+    padding-bottom: 8px !important;
+    height: 42px;
+    overflow: hidden;
+}
+.hometxt-siddhmani {
+	font-size: 12px !important;
+    color: red !important;
+    margin-bottom: -11px !important;
+    line-height: 19px;
+    padding-bottom: 8px !important;
+    overflow: hidden;
+}
+.data-contain {
+    padding: 15px;
+}
+.data-contain2 {
+    padding: 0px 15px 0px 15px;
+    margin-bottom: -30px;
+}
+.data-contain3 {
+    padding: 0px 15px 0px 15px;
+    margin-bottom: -30px;
+    background: #ffc966;
+    margin: 30px;
+    border-radius: 4px;
+    font-size: 14px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+}
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    width: 50px;
+}
+.center1 {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+.item-native{
+	--background: red !important; 
+}
+.hometxt-homepage {
+    color: red !important;
+    margin-bottom: -11px !important;
+    line-height: 23px;
+    padding-bottom: 8px !important;
+    overflow: hidden;
+	
+}
+.homepage_font{
+font-size: 18px !important;
+padding-top: 1px;
+}
+#book_now {
+    --background: #ff5400;
+}
+.book_now {
+    --background: #ff5400;
+    text-transform: none;
+}
+.input_design{
+	border: 1px solid;
+	border-color: #ff5400;
+	border-radius: 3px;
+}
+.paramarsh_container{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+#test{
+	overflow: hidden;
+}
+
+#image{
+	position: relative;
+}
+.play_granth{
+	margin-top: 15px;
+	font-size: 27px;
+	color: red;
+	margin-left: 6px;
+}
+.audio_time{
+	color: red;
+	margin-top: 21px;
+	margin-right: 7px;
+}
+.panchang_date{
+	background-color: #fff;border: 2px solid;
+	border-color: orange;
+	display: flex;
+	width: 165px;
+	margin-left: 99px;
+	margin-top: 10px;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.vrat_tyohar_date {
+    background-color: #fff;
+    border: 2px solid;
+        border-top-color: currentcolor;
+        border-right-color: currentcolor;
+        border-bottom-color: currentcolor;
+        border-left-color: currentcolor;
+    border-color: orange;
+    display: flex;
+    width: 185px;
+    margin-left: 88px;
+    margin-top: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+div.datepicker{
+  float:left;
+}
+
+
+.ui-datepicker-calendar td a[data-custom] {
+  position: relative !important;
+  padding-bottom: 10px !important;
+}
+
+.ui-datepicker-calendar td a[data-custom]::after {
+  content:  attr(data-custom) ;
+  display: block !important;
+  font-size: 9px;
+  color: red;
+}
+
+.ui-datepicker {
+width : 99% !important;
+}
+.ui-datepicker-calendar td a{
+width: 47px;
+height: 96px;
+}
+.ui-datepicker td span, .ui-datepicker td a {
+text-align: center;
+}
+.scroll_calendar {
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.regular_price{
+-webkit-text-decoration-line: line-through;
+   text-decoration-line: line-through; 
+}
+.choose_caendar_date{
+	color: red;
+    font-size: x-large;
+    margin-top: 28px;
+}
+.choose_calendar_btn{
+margin-top: 17px;
+    border: 2px solid;
+    border-color: brown;
+    border-radius: 5px;
+    margin-right: 99px;
+    margin-left: 101px;
+}
+.alert-title.sc-ion-alert-md {
+    color: red !important;
+    font-size: 30px !important;
+    font-weight: bold !important;
+}
+.alert-button.sc-ion-alert-md {
+    
+    color: brown !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+.sign_in_btn{
+   padding:5px; 
+}
+.text-center{
+    text-align:center;
+}
+.btn_submit {
+    --background: #ff5400;
+    --color:white;
+}
+
+.custom-loading {
+    --background: none;
+   
+    .loading-wrapper{
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+    }
+ }
+ .custom-loading2 {
+    --background: none;
+   
+    .loading-wrapper{
+        box-shadow: none !important;
+        position: absolute;
+        top: 320px;
+        -webkit-box-shadow: none !important;
+    }
+ }
+ .custom-loading3 {
+    --background: none;
+   
+    .loading-wrapper{
+        box-shadow: none !important;
+        position: absolute;
+        top: 425px;
+        -webkit-box-shadow: none !important;
+    }
+ }
+.spinner-lines.sc-ion-loading-md, .spinner-lines-small.sc-ion-loading-md, .spinner-bubbles.sc-ion-loading-md, .spinner-circles.sc-ion-loading-md, .spinner-crescent.sc-ion-loading-md, .spinner-dots.sc-ion-loading-md {
+    color: #ff5400;
+}
+.top_img{
+position: absolute;
+    top: 23px;
+    left: 30px;
+    font-size: 18px;
+    color: white;
+    font-weight: 700;
+}

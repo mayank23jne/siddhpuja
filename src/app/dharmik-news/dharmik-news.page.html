@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+	<ion-buttons slot="start">
+			<ion-icon name="arrow-back" style="font-size: 27px;color:red" [routerLink]="['/home-new']"></ion-icon>
+		</ion-buttons>
+    <ion-title color="danger" style="font-size: 20px;text-align: center;color:red">{{ dharmik_news | translate }} </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<img id="loader_noti" width="100%" style="position:absolute;" src="assets/images/loader.gif" style="display:none;"/>
+
+
+	<ion-card  *ngFor="let x of noti_data"  id="show_card" (click)="fn(x.id,x.sts_id,x.noti_route)">
+		<div  style="background-color:#ffdb4d;">
+		<ion-card-header>
+			<ion-row >
+				<ion-col *ngIf="x.image != '' " size="4" ><img src="{{image_url}}{{x.image}}" style="width: 85px;height: 85px;"></ion-col>
+				<ion-col *ngIf='language == 1 || x.title_english == null || x.title_english == "" ' ><ion-card-title class="not_title" id="read_{{x.id}}" >{{x.title}}</ion-card-title>
+				</ion-col>
+				<ion-col *ngIf='language == 2 && x.title_english != null && x.title_english != "" '  ><ion-card-title class="not_title" id="read_{{x.id}}" >{{x.title_english}}</ion-card-title>
+				</ion-col>
+				
+			</ion-row>
+			
+		</ion-card-header>
+		<ion-card-content >
+			<div style="color:brown"><b>{{x.date | date:'medium'}}</b></div>
+		</ion-card-content>
+	</div>
+	
+	</ion-card>
+
+
+	<center style="color:grey;" style="display:none;" id="hide_card"><h4>No news found</h4></center>
+</ion-content>

@@ -1,0 +1,22 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+		  <ion-menu-button style="color:red"></ion-menu-button>
+		</ion-buttons>
+		<img *ngIf="language_nm == 'hi' " src="assets/images/logo-2.png" class="main-logo" style="margin-top: -18px;" [routerLink]="['/home-new']">
+		<img *ngIf="language_nm == 'en' " src="assets/images/logo_english.png" class="main-logo" style="margin-top: -18px; width:100px;" [routerLink]="['/home-new']">
+		<!-- <ion-icon name="cart" color="danger" slot="end" style="font-size: 27px;"></ion-icon> -->
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<ion-card style="--background:#ffad33" *ngFor="let x of model.video_list;" [routerLink]='["/live-darshan-video", x.id]'> 
+		<img src="{{image_url}}{{x.image}}">
+		<ion-card-header >
+			<center><ion-card-title *ngIf="x.name" style="--color: red;">{{x.name}}</ion-card-title></center>
+			<center><ion-card-title *ngIf="x.name_hi != ''" style="--color: red;">{{x.name_hi}}</ion-card-title></center>
+		</ion-card-header>
+		
+	</ion-card>
+</ion-content>
+	

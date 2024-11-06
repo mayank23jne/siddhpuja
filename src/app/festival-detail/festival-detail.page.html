@@ -1,0 +1,44 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+		  <ion-menu-button style="color:red"></ion-menu-button>
+		</ion-buttons>
+		<img *ngIf="language == 'hi' " src="assets/images/logo-2.png" class="main-logo" style="margin-top: -18px;" [routerLink]="['/home-new']">
+		<img *ngIf="language == 'en' " src="assets/images/logo_english.png" class="main-logo" style="margin-top: -18px; width:100px;" [routerLink]="['/home-new']">
+		<!-- <ion-icon name="cart" color="danger" slot="end" style="font-size: 27px;"></ion-icon> -->
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="data-contain">
+		<div class="service-heading">	
+			<h3 *ngIf="language != 'en' || festival.eng_name == '' || festival.eng_name == null" style="color:red;text-align:center;">{{festival.name}}</h3>
+			<h3 *ngIf="language == 'en' && festival.eng_name != '' && festival.eng_name != null"  style="color:red;text-align:center;">{{festival.eng_name}}</h3>
+			<img  class="center" src="assets/images/new_border.png" alt="">
+			<br>
+		</div>
+		<div class="container">
+			<div class="row">
+				<img class="center1" src="{{image_url}}{{festival.image}}">
+				<br>
+				<div class="custom_content">
+					<div *ngIf="language != 'en' || festival.eng_description == '' " class="custom_content" style="font-size: 16px;text-align:justify;" [innerHTML]="festival.description" id="post_data"></div>
+					<div *ngIf="language == 'en' " class="custom_content" style="font-size: 16px;text-align:justify;" [innerHTML]="festival.eng_description" id="post_data"></div>  
+				</div>    
+			</div> 
+		</div>
+	</div>
+	
+</ion-content>
+<!-- <ion-footer color="warning">
+  <ion-toolbar>
+    <ion-row>
+		<ion-col style="text-align: center;">
+			<a href="tel:+918989153379"><ion-button style="--background: orange;--color: green;"><ion-icon name='call' ></ion-icon><span style="color:white;"> CALL US</span></ion-button></a>
+		</ion-col>
+		<ion-col style="text-align: center;">
+			<a href="whatsapp://send?phone=+918989153379"><ion-button style="--background: orange;--color: green;"><ion-icon name='logo-whatsapp'></ion-icon><span style="color:white;"> WHATSUP</span></ion-button></a>
+		</ion-col>
+	</ion-row>
+  </ion-toolbar>
+</ion-footer> -->

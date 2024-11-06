@@ -1,0 +1,57 @@
+<ion-header>
+	<ion-toolbar >
+		<ion-buttons slot="start">
+			<ion-menu-button style="color:red"></ion-menu-button>
+		</ion-buttons>
+	<img *ngIf="language_nm == 'en' " src="assets/images/logo_english.png" class="main-logo" style="margin-top: -18px; width:100px;" [routerLink]="['/home-new']">
+	<img *ngIf="language_nm == 'hi' " src="assets/images/logo-2.png" class="main-logo" style="margin-top: -18px;" [routerLink]="['/home-new']">
+    
+
+		<!-- <ion-icon name="cart" color="danger" slot="end" style="font-size: 27px;"></ion-icon> -->
+		
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<img src="assets/images/siddhpuja.jpg">
+<span class="top_img">{{menu_nm}}</span>
+<!-- <div *ngIf = "menu_nm != 'सिद्धपूजा'">
+<h3 style="color:red;text-align:center;" >{{ menu_nm }}</h3>
+<img class="center" src="assets/images/new_border.png" alt="">
+</div> -->
+
+<img id="loader_main_menu" width="100%" style="position:absolute;" src="assets/images/loader.gif" style="display:none;" />
+
+		<div class="list-button" *ngIf="error==''">
+			<ion-row>
+				<ion-col  style="text-align: center;" *ngFor="let sub_menu of sub_menu_data" size="4">
+				
+					<span *ngIf="sub_menu.is_dynamic == 1" [routerLink]="['/main-menu-new',sub_menu.id]">
+						<img class="thumbnail imghome" src="{{sub_menu.image}}">
+							<h6 *ngIf="sub_menu.name != null || sub_menu.name != '' " class="hometxt-homepage " >{{sub_menu.name | slice:0:30 }}</h6>
+							<h6 *ngIf="sub_menu.name == null || sub_menu.name == '' " class="hometxt-homepage " >{{sub_menu.name_hi | slice:0:30 }}</h6>
+							
+					</span>
+					
+					<span *ngIf="sub_menu.is_dynamic == 0" routerLink="/{{sub_menu.link}}/{{sub_menu.id}}">
+						<img class="thumbnail imghome" src="{{sub_menu.image}}">
+						<h6 *ngIf="sub_menu.name != null || sub_menu.name != '' " class="hometxt-homepage " >{{sub_menu.name | slice:0:30 }}</h6>
+						<h6 *ngIf="sub_menu.name == null || sub_menu.name == '' " class="hometxt-homepage " >{{sub_menu.name_hi | slice:0:30 }}</h6>
+					</span>
+				
+					
+				</ion-col >
+			</ion-row>
+
+		</div>
+
+
+
+
+<div  style="text-align: center;margin-top:25px" class="list-button" *ngIf="error!='' ">
+	<p>{{error}}</p>
+
+</div>
+
+</ion-content>

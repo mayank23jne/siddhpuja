@@ -1,0 +1,29 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button style="color:red"></ion-menu-button>
+		</ion-buttons>
+		<img *ngIf="language == 'hi' " src="assets/images/logo-2.png" class="main-logo" style="margin-top: -18px;" [routerLink]="['/home-new']">
+	<img *ngIf="language == 'en' " src="assets/images/logo_english.png" class="main-logo" style="margin-top: -18px; width:100px;" [routerLink]="['/home-new']">
+		<!-- <ion-icon name="share-social" style="font-size: 27px;float: right;margin-right: 13px;color:red" (click)="share_rashifal()"></ion-icon> -->
+	</ion-toolbar>
+</ion-header>
+
+<ion-content >
+<div *ngIf="yearly_rashi_data">
+	<div class="service-heading">	
+		<h3 style="color:red;text-align:center;">{{ yearly | translate }} {{ raashiphal | translate }}</h3>
+		
+		<h5 style="color:red;text-align:center;">{{model.rashi_name}} </h5>
+		<center><img *ngIf="model.image_url"  class="thumbnail imghome" src="assets/images/rashifal/{{model.image_url}}"></center>
+	</div>
+	<div class="custom_content" *ngIf="yearly_rashi_data">
+		<div class="inner-html" [innerHTML]="yearly_rashi_data" ></div> 
+	</div>
+	
+ </div>
+
+
+</ion-content>
+
+

@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button style="color:red"></ion-menu-button>
+    </ion-buttons>
+    <img *ngIf="language == 'hi' " src="assets/images/logo-2.png" class="main-logo" style="margin-top: -18px;" [routerLink]="['/home-new']">
+		<img *ngIf="language == 'en' " src="assets/images/logo_english.png" class="main-logo" style="margin-top: -18px; width:100px;" [routerLink]="['/home-new']">
+    <!-- <ion-icon name="cart" color="danger" slot="end" style="font-size: 27px;"></ion-icon> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="model.fest_data">
+
+      <input type="hidden" value="{{this.model.year}}" id="year_hidden">
+      <input type="hidden" value="{{this.model.month}}" id="month_hidden">
+
+
+
+  <ion-slides #slides (ionSlideDidChange)="slideChanged()" scrollbar="true" >
+
+    <ion-slide *ngFor="let x of model.fest_data">
+          <ion-content >
+            <center>
+              
+
+<ion-row>
+        <ion-col style="margin-top: 11px;">
+          <ion-button style="--background: orange;--color: red;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" (click)="prev_month()">Prev</ion-button>
+        </ion-col>
+        <ion-col >
+          <p display-timezone="utc" style="margin-top: 10%;color:red;border: 1px solid;border-color: orange;border-radius: 5px;width: 130px;height: 42px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);padding-top: 7%;padding-left: 1%;">{{model.today_date}}</p>
+        </ion-col>
+        <ion-col style="margin-top: 11px;">
+          <ion-button style="--background: orange;--color: red;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" (click)="next_month()">Next</ion-button>
+        </ion-col>
+        </ion-row>
+
+
+
+            </center>
+            
+          <ion-card  style="background-color:#ffe6b3;border-radius: 10px !important;" *ngFor="let x of model.fest_data"  [routerLink]="['/festival-detail', x.id]">
+            <ion-row>
+              <ion-col style="text-align: center;"><p style="color:#cc3300;font-size: 17px;">{{ x.date | date :  "dd/MM/y" }}</p> </ion-col>
+              <ion-col><img src="{{image_url}}{{x.image}}" style="height:78px;width:84px;margin-top: 4px;object-fit: cover;"></ion-col>
+              <ion-col style="text-align: left;">
+                <span *ngIf="language != 'en' || x.eng_name == '' || x.eng_name == null" style="color:red;font-size: 18px;"><b>{{x.name}}</b></span>
+                <span *ngIf="language == 'en' && x.eng_name != '' && x.eng_name != null" style="color:red;font-size: 18px;"><b>{{x.eng_name}}</b></span><br>
+                <span *ngIf="language != 'en' || x.eng_name == '' || x.eng_name == null" style="color:#cc3300;font-size:17px"> {{x.day | day}} </span>
+                <span *ngIf="language == 'en' && x.eng_name != '' && x.eng_name != null" style="color:#cc3300;font-size:17px"> {{x.day}} </span>
+              </ion-col>
+                
+            </ion-row>
+          </ion-card>
+      
+  
+      </ion-content>
+    </ion-slide>
+
+
+  </ion-slides>
+      
+    
+</ion-content>
+<!-- <ion-content *ngIf="!model.fest_data">
+  <span *ngIf="language == 'en'" style="color:red;font-size: 18px;text-align:center;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);"><b>Data Not Available</b></span>
+  <span *ngIf="language == 'hi'" style="color:red;font-size: 18px;text-align:center;position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);"><b>डेटा उपलब्ध नहीं </b></span><br>
+</ion-content> -->

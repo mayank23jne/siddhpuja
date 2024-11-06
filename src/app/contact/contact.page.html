@@ -1,0 +1,54 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button style="color:red"></ion-menu-button>
+		</ion-buttons>
+		<img *ngIf="language == 'hi' " src="assets/images/logo-2.png" class="main-logo" style="margin-top: -18px;" [routerLink]="['/home-new']">
+	  <img *ngIf="language == 'en' " src="assets/images/logo_english.png" class="main-logo" style="margin-top: -18px; width:100px;" [routerLink]="['/home-new']">
+		<!-- <ion-icon name="cart" color="danger" slot="end" style="font-size: 27px;"></ion-icon> -->
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div class="data-contain">
+	<div class="service-heading">	
+		<h3 style="color:red;text-align:center;">{{ siddhpuja | translate }}</h3>
+		<img class="center" src="assets/images/new_border.png" alt="">
+	</div>
+	<ion-row *ngIf="description" >
+					<ion-col size="12" style="text-align: justify !important;text-align:center;color:red;font-size: 16px;" [innerHTML]="description" ></ion-col>
+				</ion-row>
+	<div>
+		<h5 style="color:#ff751a;text-align:center;"><ion-icon name="mail"></ion-icon> {{ email_us | translate }}: {{ email}} </h5>
+		<h5 style="color:#ff751a;text-align:center;"><ion-icon name="call"></ion-icon>{{ contact_us | translate }}: {{ contact }} </h5>
+	</div><br>
+		<ion-row >
+			<ion-col *ngIf = "facebook" size="3" style="text-align: center;">
+				<a href="{{ facebook }}"><ion-icon name="logo-facebook" style="font-size: 50px;color: #3b5998;"></ion-icon></a>
+			</ion-col>
+			<ion-col *ngIf = "twitter" size="3" style="text-align: center;">
+				<a href="{{ twitter }}"><ion-icon name="logo-twitter" style="font-size: 50px;color: #1da1f2;"></ion-icon></a>
+			</ion-col >
+			<ion-col *ngIf = "instagram" size="3" style="text-align: center;">
+				<a href="{{ instagram }}"><ion-icon name="logo-instagram" style="font-size: 50px;color: #d1217e;"></ion-icon></a>
+			</ion-col>
+			<ion-col *ngIf = "youtube" size="3" style="text-align: center;">
+				<a href="{{ youtube }}"><ion-icon name="logo-youtube" style="font-size: 50px;color:red"></ion-icon></a>
+			</ion-col>
+		</ion-row><br><br><br><br><br><br>
+	<center ><a href="http://siddhpuja.com/terms_of_use.html" style="text-decoration: none;color:grey !important">Disclaimer | Privacy Policy | Terms and Conditions</a></center>
+</div>
+</ion-content>
+
+<!-- <ion-footer color="warning">
+  <ion-toolbar>
+    <ion-row>
+		<ion-col style="text-align: center;">
+			<a href="tel:+918989153379"><ion-button style="--background: orange;--color: green;"><ion-icon name='call' ></ion-icon><span style="color:white;"> CALL US</span></ion-button></a>
+		</ion-col>
+		<ion-col style="text-align: center;">
+			<a href="whatsapp://send?phone=+918989153379"><ion-button style="--background: orange;--color: green;"><ion-icon name='logo-whatsapp'></ion-icon><span style="color:white;"> WHATSUP</span></ion-button></a>
+		</ion-col>
+	</ion-row>
+  </ion-toolbar>
+</ion-footer> -->

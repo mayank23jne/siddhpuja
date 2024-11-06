@@ -1,0 +1,47 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+		  <ion-menu-button style="color:red"></ion-menu-button>
+		</ion-buttons>
+		<img src="assets/images/logo-2.png" class="main-logo" [routerLink]="['/home']">
+		<!-- <ion-icon name="cart" color="danger" slot="end" style="font-size: 27px;"></ion-icon> -->
+	</ion-toolbar>
+</ion-header>
+<ion-content>
+<div id="loader_calender" style="color:red;position: absolute;
+    top: 200px;
+    left: 100px;font-size: 22px;">
+कृपया प्रतीक्षा करें ...</div>
+<center id="hindu_calendar" style="display:none;">
+<div class="scroll_calendar">
+<div class="datepicker" style="width: 100% !important;"></div>
+</div>
+<div class="data-contain" style="padding: 0px;">
+		<ion-card style="background-color:#fff;" *ngIf="monthly_notes">
+			<ion-card-content>
+				<ion-row > 
+					<ion-col  size="12" style="text-align:justify;color:black !important;font-size: 16px;" [innerHTML]="monthly_notes"></ion-col>
+				</ion-row>
+			</ion-card-content>
+		</ion-card>
+</div>
+
+
+
+</center>
+
+
+  
+</ion-content>
+<!-- <ion-footer color="warning">
+  <ion-toolbar>
+    <ion-row>
+		<ion-col style="text-align: center;">
+			<a href="tel:+918989153379"><ion-button style="--background: orange;--color: green;"><ion-icon name='call' ></ion-icon><span style="color:white;"> CALL US</span></ion-button></a>
+		</ion-col>
+		<ion-col style="text-align: center;">
+			<a href="whatsapp://send?phone=+918989153379"><ion-button style="--background: orange;--color: green;"><ion-icon name='logo-whatsapp'></ion-icon><span style="color:white;"> WHATSUP</span></ion-button></a>
+		</ion-col>
+	</ion-row>
+  </ion-toolbar>
+</ion-footer> -->

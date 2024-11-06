@@ -1,0 +1,43 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+		  <ion-menu-button style="color:red"></ion-menu-button>
+		</ion-buttons>
+		<img *ngIf="language_nm == 'hi' " src="assets/images/logo-2.png" class="main-logo" style="margin-top: -18px;" [routerLink]="['/home-new']">
+		<img *ngIf="language_nm == 'en' " src="assets/images/logo_english.png" class="main-logo" style="margin-top: -18px; width:100px;" [routerLink]="['/home-new']">
+		<!-- <ion-icon name="cart" color="danger" slot="end" style="font-size: 27px;"></ion-icon> -->
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<!-- <iframe src="" style="width: 361px;height: 250px;"></iframe> -->
+	<!--  <video width="361" height="250" controls>
+  <source src="https://youtu.be/sacvCJKBekE" type="video/mp4">
+ 
+</video> --> 
+	<!-- <iframe width="420" height="315" src="{{model.video}}" frameborder="0" ></iframe> -->
+	<div id="live_vid" [innerHTML]="video"></div>
+	 
+	<div class="service-heading">	
+		<h3 style="color:red;text-align:center !important;"><b>{{ name }}</b></h3>
+	</div>
+	<div class="custom_content" *ngIf="description">
+		<div class="inner-html" [innerHTML]="description" ></div> 
+	</div>		
+	
+
+	 
+</ion-content>
+
+<!-- <ion-footer color="warning">
+  <ion-toolbar>
+    <ion-row>
+		<ion-col style="text-align: center;">
+			<a href="tel:+918989153379"><ion-button style="--background: orange;--color: green;"><ion-icon name='call' ></ion-icon><span style="color:white;"> CALL US</span></ion-button></a>
+		</ion-col>
+		<ion-col style="text-align: center;">
+			<a href="whatsapp://send?phone=+918989153379"><ion-button style="--background: orange;--color: green;"><ion-icon name='logo-whatsapp'></ion-icon><span style="color:white;"> WHATSUP</span></ion-button></a>
+		</ion-col>
+	</ion-row>
+  </ion-toolbar>
+</ion-footer> -->

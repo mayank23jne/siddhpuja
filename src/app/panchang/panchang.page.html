@@ -1,0 +1,283 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button style="color:red"></ion-menu-button>
+		</ion-buttons>
+		<img *ngIf="language_code == 'hi' " src="assets/images/logo-2.png" class="main-logo" style="margin-top: -3px;" [routerLink]="['/home-new']">
+	<img *ngIf="language_code == 'en' " src="assets/images/logo_english.png" class="main-logo" style="margin-top: -3px; width:100px;" [routerLink]="['/home-new']">
+		<ion-icon name="share-social" style="font-size: 27px;float: right;margin-right: 13px;color:red" (click)="share_panchang()"></ion-icon>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+	<img class="loader" width="100%" style="position:absolute;" src="assets/images/loader.gif" />
+	<div class="panchnag_container">
+		<div class="service-heading">
+			<!-- <div style="background-color:#ffe6b3">
+				<ion-row>
+					<ion-col style="text-align: right;margin-top: 11px;">
+						<ion-icon name="chevron-back-outline" (click)="previous_day(this.model.today_date)"></ion-icon>
+					</ion-col>
+					<ion-col style="text-align: center;">
+						<ion-datetime #myPicker value="{{this.model.today_date}}" display-timezone="utc" style="text-align:center;"></ion-datetime>
+					</ion-col>
+					<ion-col style="text-align: left;margin-top: 11px;margin-left: 10px;" >
+						<ion-icon name="chevron-forward-outline" (click)="next_day(this.model.today_date)"></ion-icon>
+					</ion-col>
+				</ion-row>
+				
+			</div> -->
+			<!-- <div  class="panchang_date">
+					<div style="margin-left:9px;display: flex;">
+						<div style="text-align: right;margin-top: 11px;">
+							<ion-icon name="chevron-back-outline" (click)="previous_day(this.model.today_date)"></ion-icon>
+						</div>
+						<div style="text-align: center;">
+							<ion-datetime #myPicker value="{{this.model.today_date}}" display-timezone="utc" style="text-align:center;" (ionChange)="updateMyDate(this.model.today_date)"></ion-datetime>
+						</div>
+						<div style="text-align: left;margin-top: 11px;margin-left: 10px;" >
+							<ion-icon name="chevron-forward-outline" (click)="next_day(this.model.today_date)"></ion-icon>
+						</div>
+					</div>
+			</div> -->
+			<center  >
+				<ion-row>
+				<ion-col style="margin-top: 11px;">
+					<!-- <ion-icon name="chevron-back-outline" (click)="previous_day(this.model.today_date)"></ion-icon> -->
+					<ion-button style="--background: orange;--color: red;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" (click)="previous_day(this.model.today_date)">Prev</ion-button>
+				</ion-col>
+				<ion-col >
+					<ion-datetime #myPicker value="{{this.model.today_date}}" display-timezone="utc" style="margin-top: 10%;color:red;border: 1px solid;border-color: orange;border-radius: 5px;width: 130px;height: 42px;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);padding-top: 8%;padding-left: 1%;"  (ionChange)="updateMyDate($event)"></ion-datetime>
+					
+				</ion-col>
+				<ion-col style="margin-top: 11px;">
+					<!-- <ion-icon name="chevron-forward-outline" (click)="next_day(this.model.today_date)"></ion-icon> -->
+					<ion-button style="--background: orange;--color: red;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);" (click)="next_day(this.model.today_date)">Next</ion-button>
+				</ion-col>
+				</ion-row>
+			</center>
+			<center>
+				<h3 style="color:red;margin-top: 9px;">{{ todays_panchang | translate }}</h3>
+			</center>
+			<img class="center" src="assets/images/new_border.png" alt="">
+		</div>
+		<div class="data-contain">
+			<ion-input type="text" placeholder="{{ choose_loc | translate }}" class="input_design" required (ionChange)="panchnagPlace(value)" id="panchnag_place"></ion-input><br>
+			<img class="center" src="assets/images/new_border.png" alt="">
+		</div>
+		<div >
+			<ion-card style="background-color:#ff9980;">
+				<img src="assets/images/panchang/ganpati_5d807a5b9322e.JPG">
+				<ion-card-content>
+					<ion-row>
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">{{ vaar | translate }}</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{model.day}}</p></ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">{{ ritu | translate }} </h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{model.ritu}}</p></ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">{{ disha_shool | translate }} </h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{model.disha_shool}}</p></ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">{{ ayan | translate }} </h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{model.ayana}}</p></ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">{{ paksha | translate }}  </h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{model.paksha}}</p></ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">{{ shaka_samvat | translate }} </h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{model.shaka_samvat}}, {{model.shaka_samvat_name}}</p></ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">{{ vikram_samvat | translate }}</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{model.vikram_samvat}}, {{model.vkram_samvat_name}} </p></ion-col>
+					</ion-row>
+				</ion-card-content>
+			</ion-card>
+			<ion-row>
+				<ion-col>
+					<ion-card style="background-color:#ffb84d">
+						<img src="assets/images/panchang/vdnh6q.jpg" style="height: 100px;width: 150%;">
+						<ion-card-header><ion-card-title style="color:red">{{ sun | translate }}</ion-card-title></ion-card-header>
+						<ion-card-content>
+							<p style="color:black"><span style="color:#ff5c33">{{ sun_sign | translate }}:</span> {{model.sun_sign}}</p>
+							<p style="color:black"><span style="color:#ff5c33">{{ sun_rise | translate }} :</span> {{model.sunrise}}</p>
+							<p style="color:black"><span style="color:#ff5c33">{{ sun_set | translate }} :</span> {{model.sunset}}</p>
+						</ion-card-content>
+					</ion-card>
+				</ion-col>
+				<ion-col>
+					<ion-card style="background-color:#b3b3ff">
+						<img src="assets/images/panchang/fullmoon-sleep-1200x800.jpg" style="height: 100px;width: 150%;">
+						<ion-card-header><ion-card-title style="color:blue">{{ moon | translate }}</ion-card-title></ion-card-header>
+						<ion-card-content>
+							<p style="color:black"><span style="color:#4d4dff">{{ moon_sign | translate }}:</span> {{model.moon_sign}}</p>
+							<p style="color:black"><span style="color:#4d4dff">{{ moon_rise | translate }} :</span> {{model.moonrise}}</p>
+							<p style="color:black"><span style="color:#4d4dff">{{ moon_set | translate }} :</span> {{model.moonset}}</p>
+						</ion-card-content>
+					</ion-card>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-card style="background-color:#ff9980">
+						<img *ngIf="language_code == 'hi'"  src="assets/images/panchang/shubh-muhurat_1574861787.jpg" style="height: 100px;width: 150%;">
+						<img *ngIf="language_code != 'hi'" src="assets/images/panchang/shubh_muhurt.jpg" style="height: 100px;width: 150%;">
+						<ion-card-header><ion-card-title style="color:green">{{ abhijeet | translate }} </ion-card-title></ion-card-header>
+						<ion-card-content>
+							<p style="color:black"><span style="color:#00b300">{{ start | translate }} :</span> {{model.abhijit_start}}</p>
+							<p style="color:black"><span style="color:#00b300">{{ end | translate }} :</span> {{model.abhijit_end}}</p>
+						</ion-card-content>
+					</ion-card>
+				</ion-col>
+				<ion-col>
+					<ion-card style="background-color:#ffe6b3">
+						<img src="assets/images/panchang/om.jpg" style="height: 100px;width: 150%;">
+						<ion-card-header><ion-card-title style="color:#ff9933">{{ gulikaal | translate }}  </ion-card-title></ion-card-header>
+						<ion-card-content>
+							<p style="color:black"><span style="color:#ffa64d">{{ start | translate }} :</span> {{model.guliKaal_start}}</p>
+							<p style="color:black"><span style="color:#ffa64d">{{ end | translate }} :</span> {{model.guliKaal_end}}</p>
+						</ion-card-content>
+					</ion-card>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-card style="background-color:#ffb84d">
+						<img src="assets/images/panchang/rahu-ketu-puja.jpg" style="height: 100px;width: 150%;">
+						<ion-card-header><ion-card-title style="color:red">{{ rahu_kaal | translate }}  </ion-card-title></ion-card-header>
+						<ion-card-content>
+							<p style="color:black"><span style="color:#ff5c33">{{ start | translate }} :</span> {{model.rahukaal_start}}</p>
+							<p style="color:black"><span style="color:#ff5c33">{{ end | translate }} :</span> {{model.rahukaal_end}}</p>
+						</ion-card-content>
+					</ion-card>
+				</ion-col>
+				<ion-col>
+					<ion-card style="background-color:#b3b3b3">
+						<img *ngIf="language_code == 'hi'"  src="assets/images/panchang/1530690231-7294.jpg" style="height: 100px;width: 150%;">
+						<img *ngIf="language_code != 'hi'"  src="assets/images/panchang/yamghantak_yog.jpg" style="height: 100px;width: 150%;">
+						<ion-card-header><ion-card-title style="color:blue">{{ yamghant_kaal | translate }} </ion-card-title></ion-card-header>
+						<ion-card-content>
+							<p style="color:black"><span style="color:#4d4dff">{{ start | translate }} :</span> {{model.yamghant_kaal_start}}</p>
+							<p style="color:black"><span style="color:#4d4dff">{{ end | translate }} :</span> {{model.yamghant_kaal_end}}</p>
+						</ion-card-content>
+					</ion-card>
+				</ion-col>
+			</ion-row>
+			<ion-card style="background-color:#ff9980">
+				<img src="assets/images/panchang/ga2.jpg">
+				<ion-card-header><ion-card-title style="color:green;text-align:center">{{ hindu_month | translate }}</ion-card-title></ion-card-header>
+				<ion-card-content style="text-align:center">
+					<p style="color:black"><span style="color:#00b300">{{ amant | translate }}  :</span> {{model.hindu_maah_amanta}}</p>
+					<p style="color:black"><span style="color:#00b300">{{ purnimant | translate }}  :</span> {{model.hindu_maah_purnimanta}}</p>
+				</ion-card-content>
+			</ion-card>
+			<ion-card style="background-color:#dd99ff">
+				<img src="assets/images/panchang/swastika-scaled.jpg">
+				<ion-card-header><ion-card-title style="color:#7700b3;text-align:center">{{ karan | translate }} </ion-card-title></ion-card-header>
+				<ion-card-content >
+					<p style="color:black"><span style="color:#7700b3">{{ devta | translate }}  :</span> {{model.karan_deity}}</p>
+					<p style="color:black"><span style="color:#7700b3">{{ name | translate }}   :</span> {{model.karan_karan_name}}</p>
+					<p style="color:black;text-align:justify">{{model.karan_special}}</p>
+					<p style="color:black"><span style="color:#7700b3">{{ end | translate }} :</span> {{model.karan_hour}} : {{model.karan_minute}} : {{model.karan_second}}</p>
+				</ion-card-content>
+			</ion-card>
+			<ion-card style="background-color:#ffe6ff">
+				<img src="assets/images/panchang/12_40_176203739constellation.jpg">
+				<ion-card-header><ion-card-title style="color:red;text-align:center">{{ nakshatra | translate }} </ion-card-title></ion-card-header>
+				<ion-card-content >
+					<p style="color:black"><span style="color:#ff5c33">{{ devta | translate }} :</span> {{model.nakshatra_deity}}</p>
+					<p style="color:black"><span style="color:#ff5c33">{{ name | translate }}  :</span> {{model.nakshatra_nak_name}}</p>
+					<p style="color:black"><span style="color:#ff5c33">{{ shashak | translate }}  :</span> {{model.nakshatra_ruler}}</p>
+					<p style="color:black"><span style="color:#ff5c33">{{ vishesh | translate }}   :</span> {{model.nakshatra_special}}</p>
+					<p style="color:black;text-align:justify">{{model.nakshatra_summary}}</p>
+					<p style="color:black"><span style="color:#ff5c33">{{ end | translate }} :</span> {{model.nakshatra_hour}} : {{model.nakshatra_minute}} : {{model.nakshatra_second}}</p>
+				</ion-card-content>
+			</ion-card>
+			<ion-card style="background-color:#ffb84d">
+				<img src="assets/images/panchang/how_to_worship_ganpati_on_ganesh_chaturthi_1742153_835x547-m.jpg">
+				<ion-card-header><ion-card-title style="color:blue;text-align:center">{{ tithi | translate }} </ion-card-title></ion-card-header>
+				<ion-card-content >
+					<p style="color:black"><span style="color:#4d4dff">{{ devta | translate }} :</span> {{model.tithi_deity}}</p>
+					<p style="color:black"><span style="color:#4d4dff">{{ tithi | translate }} {{ name | translate }}  :</span> {{model.tithi_name}}</p>
+					<p style="color:black"><span style="color:#4d4dff">{{ vishesh | translate }}  :</span> {{model.tithi_special}}</p>
+					<p style="color:black;text-align:justify">{{model.tithi_summary}}</p>
+					<p style="color:black"><span style="color:#4d4dff">{{ end | translate }} :</span> {{model.tithi_hour}} : {{model.tithi_minute}} : {{model.tithi_second}}</p>
+				</ion-card-content>
+			</ion-card>
+			<ion-card style="background-color:#ffe6b3">
+				<img src="assets/images/panchang/cropped-kundli-617308026.png">
+				<ion-card-header><ion-card-title style="color:green;text-align:center">{{ yog | translate }} </ion-card-title></ion-card-header>
+				<ion-card-content >
+					<p style="color:black"><span style="color:#00b300">{{ arth | translate }} :</span> {{model.yog_meaning}}</p>
+					<p style="color:black"><span style="color:#00b300">{{ yog | translate }}  {{ name | translate }}   :</span> {{model.yog_name}}</p>
+					<p style="color:black"><span style="color:#00b300">{{ vishesh | translate }}  :</span> {{model.yog_special}}</p>
+					<p style="color:black"><span style="color:#00b300">{{ end | translate }} :</span> {{model.yog_hour}} : {{model.yog_minute}} : {{model.yog_second}}</p>
+				</ion-card-content>
+			</ion-card>
+			<ion-card style="background-color:#ffe6b3">
+				<img src="assets/images/panchang/EQJzsN9UcAAE3XK.png">
+				<ion-card-header><ion-card-title style="color:red;text-align:center">{{ choughdhiya | translate }}  {{ muhurt | translate }} </ion-card-title></ion-card-header>
+				<ion-card-subtitle  style="color:red;text-align:center">{{ day | translate }}</ion-card-subtitle>
+				<ion-card-content>
+					<ion-row *ngFor="let x of model.mahurat_day">
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">{{ samay | translate }} :</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{x.time}}</p></ion-col>
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">{{ muhurt | translate }} :</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{x.muhurta}}</p></ion-col>
+					</ion-row>
+				</ion-card-content>
+				<ion-card-subtitle  style="color:blue;text-align:center">{{ night | translate }} </ion-card-subtitle>
+				<ion-card-content>
+					<ion-row *ngFor="let x of model.mahurat_night">
+						<ion-col style="text-align: left;"><h2 style="color:blue;text-align:center;">{{ samay | translate }} :</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{x.time}}</p></ion-col>
+						<ion-col style="text-align: left;"><h2 style="color:blue;text-align:center;">{{ muhurt | translate }} :</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{x.muhurta}}</p></ion-col>
+					</ion-row>
+				</ion-card-content>
+			</ion-card>
+			<ion-card style="background-color:#ffe6b3">
+				<img src="assets/images/panchang/Ganpati-idols_d.jpg">
+				<ion-card-header><ion-card-title style="color:red;text-align:center">{{ hora | translate }} {{ muhurt | translate }} </ion-card-title></ion-card-header>
+				<ion-card-subtitle  style="color:red;text-align:center">{{ day | translate }}</ion-card-subtitle>
+				<ion-card-content>
+					<ion-row *ngFor="let x of model.hora_day">
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">{{ samay | translate }} :</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{x.time}}</p></ion-col>
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">{{ hora | translate }} :</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{x.hora}}</p></ion-col>
+					</ion-row>
+				</ion-card-content>
+				<ion-card-subtitle  style="color:blue;text-align:center">{{ night | translate }} </ion-card-subtitle>
+				<ion-card-content>
+					<ion-row *ngFor="let x of model.hora_night">
+						<ion-col style="text-align: left;"><h2 style="color:blue;text-align:center;">{{ samay | translate }} :</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{x.time}}</p></ion-col>
+						<ion-col style="text-align: left;"><h2 style="color:blue;text-align:center;">{{ hora | translate }} :</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{x.hora}}</p></ion-col>
+					</ion-row>
+				</ion-card-content>
+			</ion-card>
+		</div>
+	</div>
+</ion-content>
+	
+<!-- <ion-footer color="warning">
+  <ion-toolbar>
+    <ion-row>
+		<ion-col style="text-align: center;">
+			<a href="tel:+918989153379"><ion-button style="--background: orange;--color: green;"><ion-icon name='call' ></ion-icon><span style="color:white;"> CALL US</span></ion-button></a>
+		</ion-col>
+		<ion-col style="text-align: center;">
+			<a href="whatsapp://send?phone=+918989153379"><ion-button style="--background: orange;--color: green;"><ion-icon name='logo-whatsapp'></ion-icon><span style="color:white;"> WHATSUP</span></ion-button></a>
+		</ion-col>
+	</ion-row>
+  </ion-toolbar>
+</ion-footer> -->

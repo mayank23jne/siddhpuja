@@ -1,0 +1,44 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button style="color:red"></ion-menu-button>
+		</ion-buttons>
+		<img src="assets/images/logo-2.png" class="main-logo" [routerLink]="['/home-new']">
+		<!-- <ion-icon name="cart" color="danger" slot="end" style="font-size: 27px;"></ion-icon> -->
+	</ion-toolbar>
+</ion-header>
+<ion-content>
+<div class="data-contain">
+	<div class="service-heading">	
+		<h3 style="color:red;text-align:center;">सिद्ध पूजा उज्जैन</h3>
+		<img class="center" src="assets/images/new_border.png" alt="">
+	</div>
+</div>
+	<ion-row>
+		<ion-col style="text-align: center;" size="4" (click)="shareViaFb()">
+			<ion-icon name="logo-facebook" style="color:#4267B2;font-size: xxx-large;"></ion-icon>
+		</ion-col>
+		<ion-col style="text-align: center;" size="4" (click)="shareViaWp()">
+			<ion-icon name="logo-whatsapp" style="color:#25D366;font-size: xxx-large;"></ion-icon>
+		</ion-col>
+		<ion-col style="text-align: center;" size="4" (click)="shareViaTwitter()">
+			<ion-icon name="logo-twitter" style="color:#00acee;font-size: xxx-large;"></ion-icon>
+		</ion-col>
+		<!--<ion-col style="text-align: center;" size="3" (click)="shareViaInstagram()">
+			<ion-icon name="logo-instagram" style="color:#3f729b;font-size: xxx-large;"></ion-icon>
+		</ion-col>-->
+	</ion-row>
+	<ion-button (click)="share()">share</ion-button>
+</ion-content>
+<!-- <ion-footer color="warning">
+	<ion-toolbar>
+		<ion-row>
+			<ion-col style="text-align: center;">
+				<a href="tel:+918989153379"><ion-button style="--background: orange;--color: green;"><ion-icon name='call' ></ion-icon><span style="color:white;"> CALL US</span></ion-button></a>
+			</ion-col>
+			<ion-col style="text-align: center;">
+				<a href="whatsapp://send?phone=+918989153379"><ion-button style="--background: orange;--color: green;"><ion-icon name='logo-whatsapp'></ion-icon><span style="color:white;"> WHATSUP</span></ion-button></a>
+			</ion-col>
+		</ion-row>
+	</ion-toolbar>
+</ion-footer> -->

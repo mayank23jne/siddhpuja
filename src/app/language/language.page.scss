@@ -1,0 +1,28 @@
+.size_18 {
+    font-size:18px !important;
+	font-weight: 700;
+}
+.medium {
+    font-family: medium !important;
+}
+.red {
+   color: red;
+    
+}
+ion-item{
+--color: red;
+}
+.language_btn {
+    background-color: #ff5400;
+    color: white;
+    padding: 11px 20px;
+    margin: 8px 0;
+    border: 1px solid white;
+    cursor: pointer;
+    width: 50%;
+    opacity: 0.9;
+    border-radius: 5px;
+  }
+ .app_button{
+ text-align:center;
+ }

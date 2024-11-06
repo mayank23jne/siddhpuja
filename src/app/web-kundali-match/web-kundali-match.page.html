@@ -1,0 +1,21 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+		  <ion-menu-button style="color:red"></ion-menu-button>
+		</ion-buttons>
+		<img *ngIf="lang_code == 'hi' " src="assets/images/logo-2.png" class="main-logo" style="margin-top: -18px;" [routerLink]="['/home-new']">
+		<img *ngIf="lang_code == 'en' " src="assets/images/logo_english.png" class="main-logo" style="margin-top: -18px; width:100px;" [routerLink]="['/home-new']">
+		<!-- <ion-icon name="cart" color="danger" slot="end" style="font-size: 27px;"></ion-icon> -->
+	</ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="lang_code == 'en'" >
+	<img src="assets/images/siddhpuja.jpg">
+	<span class="top_img">{{menu_nm}}</span>
+	<iframe src="https://siddhpuja.com/kundali_milan_english/index.php" class="ifrm"></iframe>	
+</ion-content>
+<ion-content *ngIf="lang_code == 'hi'" >
+	<img src="assets/images/siddhpuja.jpg">
+	<span class="top_img">{{menu_nm}}</span>
+	<iframe src="https://siddhpuja.com/kundali_milan/index.php" class="ifrm"></iframe>	
+</ion-content>

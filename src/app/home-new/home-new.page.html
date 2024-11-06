@@ -1,0 +1,41 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+		  <ion-menu-button style="color:red"></ion-menu-button>
+		</ion-buttons>
+
+	<img *ngIf="language == 'hi' " src="assets/images/logo-2.png" class="main-logo" style="margin-top: 0px;" [routerLink]="['/home-new']">
+	<img *ngIf="language == 'en' " src="assets/images/logo_english.png" class="main-logo" style="margin-top: 0px; width:100px;" [routerLink]="['/home-new']">
+	
+		 <button ion-button style="float: right;margin-right: 13px;background-color:white" [routerLink]="['/notification']">
+			<ion-icon name="notifications"  style="position:relative;font-weight:bold;font-size:31px;color:red;"></ion-icon>
+			<ion-badge *ngIf="badge_no > 0" color="success" style="position:absolute;font-weight:bold;font-size:9px;border-radius: 10px !important;margin-left: -13px;">{{badge_no}}</ion-badge>
+		</button> 
+		
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-slides pager="true" [options]="slideOpts">
+        <ion-slide *ngFor="let slidess of slider">
+            <img  src="{{slidess.image}}" [routerLink]="['/main-menu-new',slidess.category]">
+        </ion-slide> 
+    </ion-slides>
+
+	<div class="list-button">
+		<ion-row >
+			<ion-col *ngFor="let menu of menus" style="text-align: center;"  size="4">
+			<span  *ngIf="menu.is_dynamic == 1" [routerLink]="['/main-menu-new',menu.id]">
+				<img class="thumbnail imghome_home" src="{{menu.image}}" style="height:85px;">
+				<h6 *ngIf="menu.name != null || menu.name != '' "  class="hometxt-homepage homepage_font" >{{menu.name}}</h6>
+				<h6 *ngIf="menu.name == null || menu.name == '' "  class="hometxt-homepage homepage_font" >{{menu.name_hi}}</h6>
+			</span>
+			<span *ngIf="menu.is_dynamic == 0" routerLink="/{{menu.link}}">
+				<img class="thumbnail imghome_home" src="{{menu.image}}" style="height:85px;">
+				<h6 class="hometxt-homepage homepage_font" >{{menu.name}}</h6>
+			</span>
+			</ion-col>
+		</ion-row>
+    </div>
+	<!-- <span  [routerLink]="['/main-menu-new',265]">test</span> -->
+</ion-content>

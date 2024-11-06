@@ -1,0 +1,207 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button style="color:red"></ion-menu-button>
+    </ion-buttons>
+    <img *ngIf="language == 'hi' " src="assets/images/logo-2.png" class="main-logo" style="margin-top: -18px;" [routerLink]="['/home-new']">
+	  <img *ngIf="language == 'en' " src="assets/images/logo_english.png" class="main-logo" style="margin-top: -18px; width:100px;" [routerLink]="['/home-new']">
+    <!-- <ion-icon name="cart" color="danger" slot="end" style="font-size: 27px;"></ion-icon> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding >
+  <ion-toolbar>
+    <ion-segment (ionChange)="segmentChanged()" [(ngModel)]="segment" color="warning">
+      <!-- <ion-segment-button value="0" style="font-size: 15px;
+    font-weight: 700;text-transform: none;">
+        <ion-row > {{ today | translate }}</ion-row>
+      </ion-segment-button > -->
+      <ion-segment-button value="0" style="font-size: 15px;
+    font-weight: 700;text-transform: none;">
+        <ion-row > {{ monthly | translate }}</ion-row>
+      </ion-segment-button>
+      <ion-segment-button value="1" style="font-size: 15px;
+    font-weight: 700;text-transform: none;">
+        <ion-row >{{ yearly | translate }}</ion-row>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+
+  <ion-slides #slides (ionSlideDidChange)="slideChanged()" scrollbar="true" class="slide_main" >
+    <!-- <ion-slide>
+      <ion-content>
+      <div class="list-button">
+      <ion-row>
+      <ion-col style="text-align: center;" [routerLink]="['/rasifal-response','aries']" size="4">
+        <img class="thumbnail imghome img_rashi " src="assets/images/rashifal/mesh.png">
+        <h6 class="hometxt-homepage" >{{ aries | translate }}</h6>
+      </ion-col >
+      <ion-col style="text-align: center;" [routerLink]="['/rasifal-response','taurus']" size="4" >
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/vrushabha.png" >
+        <h6 class="hometxt-homepage">{{ taurus | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/rasifal-response','gemini']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/mithun.png">
+        <h6 class="hometxt-homepage">{{ gemini | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/rasifal-response','cancer']" size="4" >
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/karka.png">
+        <h6 class="hometxt-homepage">{{ cancer | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/rasifal-response','leo']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/singh.png">
+        <h6 class="hometxt-homepage">{{ leo | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/rasifal-response','virgo']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/kanya.png">
+        <h6 class="hometxt-homepage">{{ virgo | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/rasifal-response','libra']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/tula.png">
+        <h6 class="hometxt-homepage">{{ libra | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/rasifal-response','scorpio']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/vrishchik.png">
+        <h6 class="hometxt-homepage">{{ scorpio | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/rasifal-response','sagittarius']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/dhanu.png">
+        <h6 class="hometxt-homepage">{{ sagittarius | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/rasifal-response','capricorn']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/makara.png">
+        <h6 class="hometxt-homepage">{{ capricorn | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/rasifal-response','aquarius']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/kumbh.png">
+        <h6 class="hometxt-homepage">{{ aquarius | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/rasifal-response','pisces']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/meen.png">
+        <h6 class="hometxt-homepage">{{ pisces | translate }}</h6>
+      </ion-col>
+      
+    </ion-row>
+  </div>
+</ion-content>
+    </ion-slide> -->
+    <ion-slide>
+      <ion-content>
+      <div class="list-button">
+        <ion-row>
+      <ion-col style="text-align: center;" [routerLink]="['/monthly-rashifal-response','aries']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/mesh.png">
+        <h6 class="hometxt-homepage" >{{ aries | translate }}</h6>
+      </ion-col >
+      <ion-col style="text-align: center;" [routerLink]="['/monthly-rashifal-response','taurus']" size="4" >
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/vrushabha.png" >
+        <h6 class="hometxt-homepage">{{ taurus | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/monthly-rashifal-response','gemini']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/mithun.png">
+        <h6 class="hometxt-homepage">{{ gemini | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/monthly-rashifal-response','cancer']" size="4" >
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/karka.png">
+        <h6 class="hometxt-homepage">{{ cancer | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/monthly-rashifal-response','leo']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/singh.png">
+        <h6 class="hometxt-homepage">{{ leo | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/monthly-rashifal-response','virgo']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/kanya.png">
+        <h6 class="hometxt-homepage">{{ virgo | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/monthly-rashifal-response','libra']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/tula.png">
+        <h6 class="hometxt-homepage">{{ libra | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/monthly-rashifal-response','scorpio']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/vrishchik.png">
+        <h6 class="hometxt-homepage">{{ scorpio | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/monthly-rashifal-response','sagittarius']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/dhanu.png">
+        <h6 class="hometxt-homepage">{{ sagittarius | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/monthly-rashifal-response','capricorn']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/makara.png">
+        <h6 class="hometxt-homepage">{{ capricorn | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/monthly-rashifal-response','aquarius']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/kumbh.png">
+        <h6 class="hometxt-homepage">{{ aquarius | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/monthly-rashifal-response','pisces']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/meen.png">
+        <h6 class="hometxt-homepage">{{ pisces | translate }}</h6>
+      </ion-col>
+      
+    </ion-row>
+      </div>
+    </ion-content>
+    </ion-slide>
+    <ion-slide>
+      <ion-content>
+      <div class="list-button">
+
+        <ion-row>
+      <ion-col style="text-align: center;" [routerLink]="['/yearly-rashifal-response','aries']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/mesh.png">
+        <h6 class="hometxt-homepage" >{{ aries | translate }}</h6>
+      </ion-col >
+      <ion-col style="text-align: center;" [routerLink]="['/yearly-rashifal-response','taurus']" size="4" >
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/vrushabha.png" >
+        <h6 class="hometxt-homepage">{{ taurus | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/yearly-rashifal-response','gemini']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/mithun.png">
+        <h6 class="hometxt-homepage">{{ gemini | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/yearly-rashifal-response','cancer']" size="4" >
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/karka.png">
+        <h6 class="hometxt-homepage">{{ cancer | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/yearly-rashifal-response','leo']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/singh.png">
+        <h6 class="hometxt-homepage">{{ leo | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/yearly-rashifal-response','virgo']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/kanya.png">
+        <h6 class="hometxt-homepage">{{ virgo | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/yearly-rashifal-response','libra']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/tula.png">
+        <h6 class="hometxt-homepage">{{ libra | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/yearly-rashifal-response','scorpio']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/vrishchik.png">
+        <h6 class="hometxt-homepage">{{ scorpio | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/yearly-rashifal-response','sagittarius']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/dhanu.png">
+        <h6 class="hometxt-homepage">{{ sagittarius | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/yearly-rashifal-response','capricorn']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/makara.png">
+        <h6 class="hometxt-homepage">{{ capricorn | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/yearly-rashifal-response','aquarius']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/kumbh.png">
+        <h6 class="hometxt-homepage">{{ aquarius | translate }}</h6>
+      </ion-col>
+      <ion-col style="text-align: center;" [routerLink]="['/yearly-rashifal-response','pisces']" size="4">
+        <img class="thumbnail imghome img_rashi" src="assets/images/rashifal/meen.png">
+        <h6 class="hometxt-homepage">{{ pisces | translate }}</h6>
+      </ion-col>
+      
+    </ion-row>
+
+
+      </div>
+    </ion-content>
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>

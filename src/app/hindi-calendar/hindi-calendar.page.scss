@@ -1,0 +1,33 @@
+td, th {
+    padding: 12px;
+    border: 1px solid;
+}
+th {
+    color: red;
+    border-color: orange !important;
+}
+td{
+	color: green;
+    border-color: orange !important;
+}
+div.datepicker{
+  float:right;
+}
+.ui-datepicker .weekend .ui-state-default {
+  background: #FEA;
+}
+
+.ui-datepicker-calendar td a[data-custom] {
+  position: relative !important;
+  padding-bottom: 10px !important;
+}
+
+.ui-datepicker-calendar td a[data-custom]::after {
+  content: '$' attr(data-custom1) ;
+  display: block !important;
+  font-size: small;
+}
+
+.ui-datepicker td span, .ui-datepicker td a {
+text-align: center;
+}

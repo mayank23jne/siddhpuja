@@ -1,0 +1,217 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-icon name="arrow-back" style="font-size: 27px;color:red" [routerLink]="['/choose-calendar',model.data_date]"></ion-icon>
+		</ion-buttons>
+		<img src="assets/images/logo-2.png" class="main-logo" style="margin-top: -3px;" [routerLink]="['/home']">
+		<ion-icon name="share-social" style="font-size: 27px;float: right;margin-right: 13px;color:red" (click)="share_panchang()"></ion-icon>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+<img class="loader" width="100%" style="position:absolute;" src="assets/images/loader.gif" />
+	<div class="panchnag_container">
+		<div class="data-contain">
+			<ion-input type="text" placeholder=" स्थान चयन करें" class="input_design" required (ionChange)="panchnagPlace()" id="panchnag_place"></ion-input><br>
+			<img class="center" src="assets/images/new_border.png" alt="">
+		</div>
+		<div >
+			<ion-card style="background-color:#ff9980;">
+				<img src="assets/images/panchang/ganpati_5d807a5b9322e.JPG">
+				<ion-card-content>
+					<ion-row>
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">वार</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{model.day}}</p></ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">ऋतू </h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{model.ritu}}</p></ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">दिशा शूल </h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{model.disha_shool}}</p></ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">अयन </h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{model.ayana}}</p></ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">पक्ष  </h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{model.paksha}}</p></ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">शक सम्वत </h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{model.shaka_samvat}}, {{model.shaka_samvat_name}}</p></ion-col>
+					</ion-row>
+					<ion-row>
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">विक्रम सम्वत </h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{model.vikram_samvat}}, {{model.vkram_samvat_name}} </p></ion-col>
+					</ion-row>
+				</ion-card-content>
+			</ion-card>
+			<ion-row>
+				<ion-col>
+					<ion-card style="background-color:#ffb84d">
+						<img src="assets/images/panchang/vdnh6q.jpg" style="height: 100px;width: 150%;">
+						<ion-card-header><ion-card-title style="color:red">सूर्य</ion-card-title></ion-card-header>
+						<ion-card-content>
+							<p style="color:black"><span style="color:#ff5c33">सूर्य राशि :</span> {{model.sun_sign}}</p>
+							<p style="color:black"><span style="color:#ff5c33">सूर्योदय :</span> {{model.sunrise}}</p>
+							<p style="color:black"><span style="color:#ff5c33">सूर्यास्त :</span> {{model.sunset}}</p>
+						</ion-card-content>
+					</ion-card>
+				</ion-col>
+				<ion-col>
+					<ion-card style="background-color:#b3b3ff">
+						<img src="assets/images/panchang/fullmoon-sleep-1200x800.jpg" style="height: 100px;width: 150%;">
+						<ion-card-header><ion-card-title style="color:blue">चंद्र</ion-card-title></ion-card-header>
+						<ion-card-content>
+							<p style="color:black"><span style="color:#4d4dff">चंद्र राशि :</span> {{model.moon_sign}}</p>
+							<p style="color:black"><span style="color:#4d4dff">चद्रोदय :</span> {{model.moonrise}}</p>
+							<p style="color:black"><span style="color:#4d4dff">चन्द्रास्त :</span> {{model.moonset}}</p>
+						</ion-card-content>
+					</ion-card>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-card style="background-color:#ff9980">
+						<img src="assets/images/panchang/shubh-muhurat_1574861787.jpg" style="height: 100px;width: 150%;">
+						<ion-card-header><ion-card-title style="color:green">अभिजीत मुहूर्त </ion-card-title></ion-card-header>
+						<ion-card-content>
+							<p style="color:black"><span style="color:#00b300">प्रारम्भ :</span> {{model.abhijit_start}}</p>
+							<p style="color:black"><span style="color:#00b300">समाप्त :</span> {{model.abhijit_end}}</p>
+						</ion-card-content>
+					</ion-card>
+				</ion-col>
+				<ion-col>
+					<ion-card style="background-color:#ffe6b3">
+						<img src="assets/images/panchang/om.jpg" style="height: 100px;width: 150%;">
+						<ion-card-header><ion-card-title style="color:#ff9933">गुलिकाल  </ion-card-title></ion-card-header>
+						<ion-card-content>
+							<p style="color:black"><span style="color:#ffa64d">प्रारम्भ :</span> {{model.guliKaal_start}}</p>
+							<p style="color:black"><span style="color:#ffa64d">समाप्त :</span> {{model.guliKaal_end}}</p>
+						</ion-card-content>
+					</ion-card>
+				</ion-col>
+			</ion-row>
+			<ion-row>
+				<ion-col>
+					<ion-card style="background-color:#ffb84d">
+						<img src="assets/images/panchang/rahu-ketu-puja.jpg" style="height: 100px;width: 150%;">
+						<ion-card-header><ion-card-title style="color:red">राहुकाल </ion-card-title></ion-card-header>
+						<ion-card-content>
+							<p style="color:black"><span style="color:#ff5c33">प्रारम्भ :</span> {{model.rahukaal_start}}</p>
+							<p style="color:black"><span style="color:#ff5c33">समाप्त :</span> {{model.rahukaal_end}}</p>
+						</ion-card-content>
+					</ion-card>
+				</ion-col>
+				<ion-col>
+					<ion-card style="background-color:#b3b3b3">
+						<img src="assets/images/panchang/1530690231-7294.jpg" style="height: 100px;width: 150%;">
+						<ion-card-header><ion-card-title style="color:blue">यमघण्ट काल </ion-card-title></ion-card-header>
+						<ion-card-content>
+							<p style="color:black"><span style="color:#4d4dff">प्रारम्भ :</span> {{model.yamghant_kaal_start}}</p>
+							<p style="color:black"><span style="color:#4d4dff">समाप्त :</span> {{model.yamghant_kaal_end}}</p>
+						</ion-card-content>
+					</ion-card>
+				</ion-col>
+			</ion-row>
+			<ion-card style="background-color:#ff9980">
+				<img src="assets/images/panchang/ga2.jpg">
+				<ion-card-header><ion-card-title style="color:green;text-align:center">हिन्दू माह</ion-card-title></ion-card-header>
+				<ion-card-content style="text-align:center">
+					<p style="color:black"><span style="color:#00b300">अमांत  :</span> {{model.hindu_maah_amanta}}</p>
+					<p style="color:black"><span style="color:#00b300">पुर्णिमांत  :</span> {{model.hindu_maah_purnimanta}}</p>
+				</ion-card-content>
+			</ion-card>
+			<ion-card style="background-color:#dd99ff">
+				<img src="assets/images/panchang/swastika-scaled.jpg">
+				<ion-card-header><ion-card-title style="color:#7700b3;text-align:center">करण</ion-card-title></ion-card-header>
+				<ion-card-content >
+					<p style="color:black"><span style="color:#7700b3">देवता :</span> {{model.karan_deity}}</p>
+					<p style="color:black"><span style="color:#7700b3">नाम  :</span> {{model.karan_karan_name}}</p>
+					<p style="color:black;text-align:justify">{{model.karan_special}}</p>
+					<p style="color:black"><span style="color:#7700b3">समाप्त :</span> {{model.karan_hour}} : {{model.karan_minute}} : {{model.karan_second}}</p>
+				</ion-card-content>
+			</ion-card>
+			<ion-card style="background-color:#ffe6ff">
+				<img src="assets/images/panchang/12_40_176203739constellation.jpg">
+				<ion-card-header><ion-card-title style="color:red;text-align:center">नक्षत्र </ion-card-title></ion-card-header>
+				<ion-card-content >
+					<p style="color:black"><span style="color:#ff5c33">देवता :</span> {{model.nakshatra_deity}}</p>
+					<p style="color:black"><span style="color:#ff5c33">नाम  :</span> {{model.nakshatra_nak_name}}</p>
+					<p style="color:black"><span style="color:#ff5c33">शासक  :</span> {{model.nakshatra_ruler}}</p>
+					<p style="color:black"><span style="color:#ff5c33">विशेष  :</span> {{model.nakshatra_special}}</p>
+					<p style="color:black;text-align:justify">{{model.nakshatra_summary}}</p>
+					<p style="color:black"><span style="color:#ff5c33">समाप्त :</span> {{model.nakshatra_hour}} : {{model.nakshatra_minute}} : {{model.nakshatra_second}}</p>
+				</ion-card-content>
+			</ion-card>
+			<ion-card style="background-color:#ffb84d">
+				<img src="assets/images/panchang/how_to_worship_ganpati_on_ganesh_chaturthi_1742153_835x547-m.jpg">
+				<ion-card-header><ion-card-title style="color:blue;text-align:center">तिथि </ion-card-title></ion-card-header>
+				<ion-card-content >
+					<p style="color:black"><span style="color:#4d4dff">देवता :</span> {{model.tithi_deity}}</p>
+					<p style="color:black"><span style="color:#4d4dff">तिथि नाम  :</span> {{model.tithi_name}}</p>
+					<p style="color:black"><span style="color:#4d4dff">विशेष  :</span> {{model.tithi_special}}</p>
+					<p style="color:black;text-align:justify">{{model.tithi_summary}}</p>
+					<p style="color:black"><span style="color:#4d4dff">समाप्त :</span> {{model.tithi_hour}} : {{model.tithi_minute}} : {{model.tithi_second}}</p>
+				</ion-card-content>
+			</ion-card>
+			<ion-card style="background-color:#ffe6b3">
+				<img src="assets/images/panchang/cropped-kundli-617308026.png">
+				<ion-card-header><ion-card-title style="color:green;text-align:center">योग</ion-card-title></ion-card-header>
+				<ion-card-content >
+					<p style="color:black"><span style="color:#00b300">अर्थ :</span> {{model.yog_meaning}}</p>
+					<p style="color:black"><span style="color:#00b300">योग नाम   :</span> {{model.yog_name}}</p>
+					<p style="color:black"><span style="color:#00b300">विशेष  :</span> {{model.yog_special}}</p>
+					<p style="color:black"><span style="color:#00b300">समाप्त :</span> {{model.yog_hour}} : {{model.yog_minute}} : {{model.yog_second}}</p>
+				</ion-card-content>
+			</ion-card>
+			<ion-card style="background-color:#ffe6b3">
+				<img src="assets/images/panchang/EQJzsN9UcAAE3XK.png">
+				<ion-card-header><ion-card-title style="color:red;text-align:center">चौघड़िया  मुहूर्त </ion-card-title></ion-card-header>
+				<ion-card-subtitle  style="color:red;text-align:center">दिन</ion-card-subtitle>
+				<ion-card-content>
+					<ion-row *ngFor="let x of model.mahurat_day">
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">समय :</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{x.time}}</p></ion-col>
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">मुहूर्त :</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{x.muhurta}}</p></ion-col>
+					</ion-row>
+				</ion-card-content>
+				<ion-card-subtitle  style="color:blue;text-align:center">रात्रि </ion-card-subtitle>
+				<ion-card-content>
+					<ion-row *ngFor="let x of model.mahurat_night">
+						<ion-col style="text-align: left;"><h2 style="color:blue;text-align:center;">समय :</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{x.time}}</p></ion-col>
+						<ion-col style="text-align: left;"><h2 style="color:blue;text-align:center;">मुहूर्त :</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{x.muhurta}}</p></ion-col>
+					</ion-row>
+				</ion-card-content>
+			</ion-card>
+			<ion-card style="background-color:#ffe6b3">
+				<img src="assets/images/panchang/Ganpati-idols_d.jpg">
+				<ion-card-header><ion-card-title style="color:red;text-align:center">होरा मुहूर्त </ion-card-title></ion-card-header>
+				<ion-card-subtitle  style="color:red;text-align:center">दिन</ion-card-subtitle>
+				<ion-card-content>
+					<ion-row *ngFor="let x of model.hora_day">
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">समय :</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{x.time}}</p></ion-col>
+						<ion-col style="text-align: left;"><h2 style="color:red;text-align:center;">होरा :</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{x.hora}}</p></ion-col>
+					</ion-row>
+				</ion-card-content>
+				<ion-card-subtitle  style="color:blue;text-align:center">रात्रि </ion-card-subtitle>
+				<ion-card-content>
+					<ion-row *ngFor="let x of model.hora_night">
+						<ion-col style="text-align: left;"><h2 style="color:blue;text-align:center;">समय :</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{x.time}}</p></ion-col>
+						<ion-col style="text-align: left;"><h2 style="color:blue;text-align:center;">होरा :</h2></ion-col>
+						<ion-col style="text-align: left;"><p style="color:black">{{x.hora}}</p></ion-col>
+					</ion-row>
+				</ion-card-content>
+			</ion-card>
+		</div>
+	</div>
+</ion-content>

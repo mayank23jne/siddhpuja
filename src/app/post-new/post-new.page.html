@@ -1,0 +1,87 @@
+
+<ion-header>
+	
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button style="color:red"></ion-menu-button>
+		  </ion-buttons>
+		
+		  <img *ngIf="language == 'hi' " src="assets/images/logo-2.png" class="main-logo" style="margin-top: -3px;" [routerLink]="['/home-new']">
+		  <img *ngIf="language == 'en' " src="assets/images/logo_english.png" class="main-logo" style="margin-top: -3px; width:100px;" [routerLink]="['/home-new']">
+		
+	<ion-icon name="share-social" style="font-size: 27px;float: right;margin-right: 13px;color:red" (click)="share_post()"></ion-icon>
+		
+		
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+<img id="loader" width="100%" style="position:absolute;" src="assets/images/loader.gif" />
+
+
+<div class="data-contain">
+	
+	<div class="service-heading">	
+		<h3 style="color:red;text-align:center;">{{title}}</h3>
+		<img class="center" src="assets/images/new_border.png" alt="">
+		<br>
+	</div>
+	
+
+	<div class="container">
+		<div>
+			<img class="center1" src="{{image_url}}"><br>
+			<div style="text-align: center;" *ngIf="language == 'hi' && audio != null ">
+				<audio controls controlsList="nodownload">
+					<source src="{{audio_url}}{{audio}}" type="audio/mp3">
+				</audio><br>
+			</div>
+			
+			<div style="text-align: center;" *ngIf="language == 'en' && audio_eng != null " >
+				<audio controls controlsList="nodownload">
+					<source src="{{audio_url}}{{audio_eng}}" type="audio/mp3">
+				</audio><br>
+			</div><br>
+			<span *ngIf="puja_price != null"><span style="color:brown"><b>Price : </b></span>&nbsp;&nbsp;<span style="color:blue"><b>₹ {{puja_price}}</b></span></span>
+			
+			<div class="custom_content">
+				<div class="custom_content" style="font-size: 16px;text-align:justify;" [innerHTML]="safehtml" id="post_data"></div> 
+			</div>    
+		</div> 
+		
+		<ion-row *ngIf="!parent">
+			<ion-col style="text-align: center;" *ngIf="puja_price != null">
+				<ion-button class="book_now" id="book_now" [routerLink]="['/book-now', puja_id,title,puja_price]">{{ book_now | translate }}  ₹{{puja_price}} </ion-button>
+			</ion-col>
+			<ion-col style="text-align: center;" *ngIf="whatsapp_link == 'Yes' " >
+				<!-- <a href="whatsapp://send?phone=+918989153379" id="book_now_whatsup"><img class="thumbnail" src="assets/images/whatsup_logo.jpg" style="height:50px;"></a> -->
+				<a href="https://wa.me/918989153379?text={{post_link}}" id="book_now_whatsup"><img class="thumbnail" src="assets/images/whatsup_logo.jpg" style="height:50px;"></a>
+			</ion-col>
+			
+			
+		</ion-row>
+		<ion-row *ngIf="parent" >
+					<!-- <ion-col  size="6" style="text-align:center;"><ion-button class="book_now" [routerLink]="['/pratahm-prashn-response', model.name,model.category_id]" >{{ first_free | translate }}</ion-button></ion-col> -->
+					<ion-col *ngIf="puja_price != null"  size="12" style="text-align:center;"><ion-button  class="book_now" [routerLink]="['/paramarsh', model.name ,model.category_id]" >₹ {{puja_price}}/-</ion-button></ion-col>
+					<ion-col *ngIf="puja_price == null"  size="12" style="text-align:center;"><ion-button  class="book_now" [routerLink]="['/paramarsh', model.name ,model.category_id]" >₹ 551/-</ion-button></ion-col>
+		</ion-row>
+
+	</div> 
+
+</div>
+<div id="no_post" ></div>
+
+</ion-content>
+
+<!-- <ion-footer color="warning">
+  <ion-toolbar>
+    <ion-row>
+		<ion-col style="text-align: center;">
+			<a href="tel:+918989153379"><ion-button style="--background: orange;--color: green;"><ion-icon name='call' ></ion-icon><span style="color:white;"> CALL US</span></ion-button></a>
+		</ion-col>
+		<ion-col style="text-align: center;">
+			<a href="whatsapp://send?phone=+918989153379"><ion-button style="--background: orange;--color: green;"><ion-icon name='logo-whatsapp'></ion-icon><span style="color:white;"> WHATSUP</span></ion-button></a>
+		</ion-col>
+	</ion-row>
+  </ion-toolbar>
+</ion-footer> -->

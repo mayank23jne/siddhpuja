@@ -1,0 +1,124 @@
+<ion-header>
+  <ion-toolbar>
+    
+    <ion-buttons slot="start">
+      <ion-menu-button style="color:red"></ion-menu-button>
+    </ion-buttons>
+    <img *ngIf="language == 'hi' " src="assets/images/logo-2.png" class="main-logo" style="margin-top: -18px;" [routerLink]="['/home-new']">
+	  <img *ngIf="language == 'en' " src="assets/images/logo_english.png" class="main-logo" style="margin-top: -18px; width:100px;" [routerLink]="['/home-new']">
+    <!-- <ion-icon name="cart" color="danger" slot="end" style="font-size: 27px;"></ion-icon> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+        <div style="margin-top: 40px;">
+            <ion-row>
+                  <ion-col style="text-align: right;font-size: 20px;">
+                    <b>Welcome to</b>
+                  </ion-col>
+                  <ion-col style="text-align: left;">
+                  
+                  <img *ngIf="language == 'hi' " src="assets/images/logo-2.png" class="sp-logo" style="margin-top: -18px;" [routerLink]="['/home-new']">
+                  <img *ngIf="language == 'en' " src="assets/images/logo_english.png" class="sp-logo" style="margin-top: -18px; width:120px;" [routerLink]="['/home-new']">
+                 
+                </ion-col>
+                </ion-row>
+            <p style="font-size: 20px;
+            text-align: center;padding-top: 10px;">Sign in or create an account.It takes less than a minute!</p>
+        </div>
+
+        <ion-row style="margin-top: 25px;">
+              <ion-col style="text-align: right;">
+               <a (click)="loginWithGoogle()"><img src="assets/images/google.png" style="width: 48%;"></a>
+              </ion-col>
+              <ion-col >
+                <a (click)="loginWithFacebook()" ><img src="assets/images/facebook.png" style="width: 54%;"></a>
+              </ion-col>
+        </ion-row>
+
+
+  <form name="form" (ngSubmit)="frm.form.valid && log_form(frm)" #frm="ngForm" method="post" novalidate class="form_sign">
+
+        <ion-row>
+              <ion-col >
+               <hr style="height:0px;color: gray;background: gray;">
+              </ion-col>
+              <p style="margin-top: 4px;">or</p>
+              <ion-col >
+               <hr style="height:0px;color: gray;background: gray;">
+              </ion-col>
+        </ion-row>
+      
+        <ion-row>
+          <ion-col style="color:#ff5400;">
+            <b>Sign In</b>
+          </ion-col>
+          <ion-col style="text-align: right;color:grey;">
+           <b [routerLink]="['/signup']">Sign Up</b>
+          </ion-col>
+        </ion-row>
+
+
+        <div class="form-group">
+        <ion-row class="email_cls">   
+           <ion-col size="1">
+            <fa-icon class="icon_c" icon="envelope" ></fa-icon>
+          </ion-col>
+          <ion-col >
+            <input  type="text" name="email" class="form-control" ngModel placeholder="Email" #email="ngModel" [ngClass]="{ 'is-invalid': frm.submitted && email.invalid }" required email>
+        </ion-col>
+        </ion-row>
+            <div *ngIf="frm.submitted && email.invalid" class="invalid-feedback">
+              <div *ngIf="email.errors.required" style="color:red;">Email is required</div>
+              <div *ngIf="email.errors.email" style="color:red;">Email must be a valid email address</div>
+            </div>
+            </div>
+      
+            <div class="form-group">
+              <ion-row class="email_cls">   
+           <ion-col size="1">
+            <fa-icon class="icon_c" icon="lock" ></fa-icon>
+          </ion-col>
+          <ion-col >
+            <input type="password" name="password" class="form-control"  ngModel placeholder="Password" #pass="ngModel" [ngClass]="{ 'is-invalid': frm.submitted && pass.invalid }" required minlength="6">
+            
+            </ion-col>
+        </ion-row>
+        <div *ngIf="frm.submitted && pass.invalid" class="invalid-feedback">
+              <div *ngIf="pass.errors.required" style="color:red;">Password is required</div>
+              <div *ngIf="pass.errors.minlength" style="color:red;">Password must be at least 6 characters</div>
+            </div>
+            </div>
+                <button type="submit" class="loginbtn" style="margin-top: 35px;">Sign In</button>
+                
+        <div class="signin" >
+          <b [routerLink]="['/forgot-password']">Forgot password ?</b>
+          
+        </div>
+      
+    </form>
+    <!-- <div class="ion-padding" *ngIf="isLoggedIn === true">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Hi, {{users.name}}</ion-card-subtitle>
+        <ion-card-title>{{users.email}}</ion-card-title>
+      </ion-card-header>
+      <img src="{{users.picture.data.url}}" width="100" alt="{{users.name}}" />
+      <ion-card-content>
+        <p>
+          <ion-button expand="full" color="secondary" (click)="logout()">
+            Logout
+            <ion-icon name="log-out"></ion-icon>
+          </ion-button>
+        </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div class="ion-padding" *ngIf="isLoggedIn === false">
+    <ion-button expand="full" color="primary" (click)="fbLogin()">
+      Login with
+      <ion-icon name="logo-facebook"></ion-icon>
+    </ion-button>
+  </div> -->
+</ion-content>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "759837662508",
+    "firebase_url": "https://siddhpuja-200d8.firebaseio.com",
+    "project_id": "siddhpuja-200d8",
+    "storage_bucket": "siddhpuja-200d8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:759837662508:android:23f1a4a1709a58dc89a089",
+        "android_client_info": {
+          "package_name": "com.siddhpuja.ujjain"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "759837662508-kvuk2hugbo8fd0ui4f29ctksibpi034j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBcmUKSX6BYVv21joz9VH1jPvRlO85d4g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "759837662508-kvuk2hugbo8fd0ui4f29ctksibpi034j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

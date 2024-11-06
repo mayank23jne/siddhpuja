@@ -1,0 +1,71 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+			<ion-menu-button style="color:red"></ion-menu-button>
+		</ion-buttons>
+	<img *ngIf="language == 'hi' " src="assets/images/logo-2.png" class="main-logo" style="margin-top: -3px;" [routerLink]="['/home-new']">
+	<img *ngIf="language == 'en' " src="assets/images/logo_english.png" class="main-logo" style="margin-top: -3px; width:100px;" [routerLink]="['/home-new']">
+		<ion-icon name="share-social" style="font-size: 27px;float: right;margin-right: 13px;color:red" (click)="share_rashifal()"></ion-icon>
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="service-heading">	
+		<h3 style="color:red;text-align:center;">{{ today | translate }}</h3>
+		<h5 style="color:red;text-align:center;">{{model.rashi_date}}</h5>
+		<h5 style="color:red;text-align:center;"> {{model.rashi_name |titlecase}} </h5>
+		<center><img *ngIf="model.image_url"  class="thumbnail imghome" src="assets/images/rashifal/{{model.image_url}}"></center>
+	</div>
+	<div class="data-contain">
+		<ion-card style="background-color:#ffc966;">
+			<ion-card-content>
+				<ion-row>
+					<ion-col size="4" style="color:brown;font-size:17px"><b>{{ health | translate }} : </b></ion-col>
+					<ion-col size="8" style="text-align:justify;color:black;font-size: 16px;">{{rashi_data.health}}</ion-col>
+				</ion-row>
+			</ion-card-content>
+		</ion-card>
+		<ion-card style="background-color:#ffc966;">
+			<ion-card-content>
+				<ion-row>
+					<ion-col size="4" style="color:brown;font-size:17px;"><b>{{ emotions | translate }} : </b></ion-col>
+					<ion-col size="8" style="text-align:justify;color:black;font-size: 16px;">{{rashi_data.emotions}}</ion-col>
+				</ion-row>
+			</ion-card-content>
+		</ion-card>
+		<ion-card style="background-color:#ffc966;">
+			<ion-card-content>
+				<ion-row>
+					<ion-col size="4" style="color:brown;font-size:17px"><b>{{ luck | translate }} : </b></ion-col>
+					<ion-col size="8" style="text-align:justify;color:black;font-size: 16px;">{{rashi_data.luck}}</ion-col>
+				</ion-row>
+			</ion-card-content>
+		</ion-card>
+		<ion-card style="background-color:#ffc966;">
+			<ion-card-content>
+				<ion-row>
+					<ion-col size="4" style="color:brown;font-size:17px"><b>{{ personal_life | translate }}: </b></ion-col>
+					<ion-col size="8" style="text-align:justify;color:black;font-size: 16px;">{{rashi_data.personal_life}}</ion-col>
+				</ion-row>
+			</ion-card-content>
+		</ion-card>
+		<ion-card style="background-color:#ffc966;">
+			<ion-card-content>
+				<ion-row>
+					<ion-col size="4" style="color:brown;font-size:17px"><b>{{ business | translate }}: </b></ion-col>
+					<ion-col size="8" style="text-align:justify;color:black;font-size: 16px;">{{rashi_data.profession}}</ion-col>
+				</ion-row>
+			</ion-card-content>
+		</ion-card>
+		<ion-card style="background-color:#ffc966;">
+			<ion-card-content>
+				<ion-row>
+					<ion-col size="4" style="color:brown;font-size:17px"><b>{{ travel | translate }} : </b></ion-col>
+					<ion-col size="8" style="text-align:justify;color:black;font-size: 16px;">{{rashi_data.travel}}</ion-col>
+				</ion-row>
+			</ion-card-content>
+		</ion-card>
+	</div>
+	
+</ion-content>
+

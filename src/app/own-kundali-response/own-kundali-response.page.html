@@ -1,0 +1,182 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+		  <ion-menu-button style="color:red"></ion-menu-button>
+		</ion-buttons>
+		<img src="assets/images/logo-2.png" class="main-logo" [routerLink]="['/home-new']">
+		<!-- <ion-icon name="cart" color="danger" slot="end" style="font-size: 27px;"></ion-icon> -->
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<!--<div class="list-button">
+		 <center><h1 style="color:#ff6600;border: 1px solid;">सामान्य विवरण</h1></center>
+		<center><h5 style="color:#00cc00;">सामान्य विवरण</h5></center>
+		<table class="table table-striped">
+			  <tr>
+				<td>जन्म दिनांक</td>
+				<td>{{model.janam_dinank}}</td>
+			  </tr>
+			  <tr>
+				<td>जन्म समय</td>
+				<td>{{model.janm_samay}}</td>
+			  </tr>
+			  <tr>
+				<td>समय क्षेत्र</td>
+				<td>{{model.janam_shetra}}</td>
+			  </tr>
+			  <tr>
+				<td>अयनांश</td>
+				<td>{{model.ayanamsha}}</td>
+			  </tr>
+			  <tr>
+				<td>सूयोर्दय</td>
+				<td>{{model.suryoday}}</td>
+			  </tr>
+			  <tr>
+				<td>सूयार्स्त</td>
+				<td>{{model.suryast}}</td>
+			  </tr>
+		</table>
+		<center><h5 style="color:#00cc00;">पंचांग विवरण</h5></center>
+		<table class="table table-striped">
+			  <tr>
+				<td>तिथि</td>
+				<td>{{model.tithi}}</td>
+			  </tr>
+			  <tr>
+				<td>योग</td>
+				<td>{{model.nakshatra}}</td>
+			  </tr>
+			  <tr>
+				<td>नक्षत्र</td>
+				<td>{{model.nakshatra}}</td>
+			  </tr>
+			  <tr>
+				<td>करण</td>
+				<td>{{model.karan}}</td>
+			  </tr>
+			  
+		</table>
+		<center><h5 style="color:#00cc00;">ज्योतिषीय विवरण</h5></center>
+		<table class="table table-striped">
+			  <tr>
+				<td>वणर्</td>
+				<td>{{model.Varna}}</td>
+			  </tr>
+			  <tr>
+				<td>वश्य</td>
+				<td>{{model.Vashya}}</td>
+			  </tr>
+			  <tr>
+				<td>योनि</td>
+				<td>{{model.Yoni}}</td>
+			  </tr>
+			  <tr>
+				<td>गण</td>
+				<td>{{model.Gan}}</td>
+			  </tr>
+			  <tr>
+				<td>नाड़ी</td>
+				<td>{{model.Nadi}}</td>
+			  </tr>
+			  <tr>
+				<td>जन्म राशि </td>
+				<td>{{model.sign}}</td>
+			  </tr>
+			  <tr>
+				<td>राशि स्वामी</td>
+				<td>{{model.SignLord}}</td>
+			  </tr>
+			  <tr>
+				<td>नक्षत्र</td>
+				<td>{{model.Naksahtra}}</td>
+			  </tr>
+			  <tr>
+				<td>नक्षत्र स्वामी</td>
+				<td>{{model.NaksahtraLord}}</td>
+			  </tr>
+			  <tr>
+				<td>चरण</td>
+				<td>{{model.Charan}}</td>
+			  </tr>
+			  <tr>
+				<td>युञ्जा</td>
+				<td>{{model.yunja}}</td>
+			  </tr>
+			  <tr>
+				<td>तत्त्व</td>
+				<td>{{model.tatva}}</td>
+			  </tr>
+			  <tr>
+				<td>नामाक्षर</td>
+				<td>{{model.name_alphabet}}</td>
+			  </tr>
+			  <tr>
+				<td>पाया</td>
+				<td>{{model.paya}}</td>
+			  </tr>
+			  <tr>
+				<td>लग्न</td>
+				<td>{{model.ascendant}}</td>
+			  </tr>
+			  <tr>
+				<td>लग्न स्वामी</td>
+				<td>{{model.ascendant_lord}}</td>
+			  </tr>
+		</table>
+		<center><h1 style="color:#ff6600;border: 1px solid;">ग्रहस्थति</h1></center>
+		<table class="table table-striped">
+			<tr>
+				<th>गृह</th>
+				<th>जन्म राशि</th>
+				<th>राशि स्वामी</th>
+			</tr>
+			<tr *ngFor="let x of grah_data">
+				<td>{{ x.name }}</td>
+				<td>{{ x.sign }}</td>
+				<td>{{ x.signLord }}</td>
+			</tr>
+		</table><br>
+		<table class="table table-striped">
+			<tr>
+				<th>गृह</th>
+				<th>नक्षत्र </th>
+				<th>नक्षत्र  स्वामी</th>
+				<th>भाव</th>
+			</tr>
+			<tr *ngFor="let x of grah_data">
+				<td>{{ x.name }}</td>
+				<td>{{ x.nakshatra }}</td>
+				<td>{{ x.nakshatraLord }}</td>
+				<td>{{ x.nakshatra_pad }}</td>
+			</tr>
+		</table>
+		<center><h1 style="color:#ff6600;border: 1px solid;">भाव मध्य</h1></center>
+		<div>लग्न - {{ model.ascendant }} दशम भाव मध्य - {{ model.ayanamsha }} </div>
+		<table class="table table-striped">
+			<tr>
+				<th>भाव</th>
+				<th>जन्म राशि</th>
+				<th>भाव मध्य</th>
+			</tr>
+			<tr>
+			
+			</tr>
+		</table>
+	</div> -->
+	<center style="margin-top: 158px;color:red;"><h3>हमारी एप्लीकेशन  का उपयोग करने के लिए धन्यवाद</h3></center>
+	<center id="pdf_btn_match_making"><a href="{{pdfUrl}}" ><ion-button style="--background: #ffa31a;margin-top: 18px;margin-left: 7px;" type="submit">अपनी कुंडली डाउनलोड करें</ion-button></a></center>
+</ion-content>
+<!-- <ion-footer color="warning">
+  <ion-toolbar>
+    <ion-row>
+		<ion-col style="text-align: center;">
+			<a href="tel:+918989153379"><ion-button style="--background: orange;--color: green;"><ion-icon name='call' ></ion-icon><span style="color:white;"> CALL US</span></ion-button></a>
+		</ion-col>
+		<ion-col style="text-align: center;">
+			<a href="whatsapp://send?phone=+918989153379"><ion-button style="--background: orange;--color: green;"><ion-icon name='logo-whatsapp'></ion-icon><span style="color:white;"> WHATSUP</span></ion-button></a>
+		</ion-col>
+	</ion-row>
+  </ion-toolbar>
+</ion-footer> -->

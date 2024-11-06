@@ -1,0 +1,91 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+		  <ion-menu-button style="color:red"></ion-menu-button>
+		</ion-buttons>
+		<img *ngIf="language == 'hi' " src="assets/images/logo-2.png" class="main-logo" style="margin-top: -18px;" [routerLink]="['/home-new']">
+	<img *ngIf="language == 'en' " src="assets/images/logo_english.png" class="main-logo" style="margin-top: -18px; width:100px;" [routerLink]="['/home-new']">
+		
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="service-heading">	
+		<h3 style="color:red;text-align:center;">{{ kundali_print | translate }}</h3>
+		<img class="center" src="assets/images/new_border.png" alt="">
+	</div>
+	<div class="data-contain" style="margin-top: -30px;">
+		<form>
+			<h6 style="color:#ff5400">{{ name | translate }} </h6>
+			<ion-input type="text" placeholder="{{ name | translate }}" class="input_design" id="name" required></ion-input>
+			<div style="display:none;" id="ename">
+				<div style="color:red">* {{ name | translate }}  {{ required | translate }}</div>
+			</div>
+			<h6 style="color:#ff5400">{{ contact | translate }} </h6>
+			<ion-input type="text" placeholder="{{ contact | translate }}" class="input_design" id="contact" required></ion-input>
+			<div style="display:none;" id="econtact">
+				<div style="color:red">*  {{ contact | translate }} {{ required | translate }}</div>
+			</div>
+			<h6 style="color:#ff5400">{{ email_id | translate }} </h6>
+			<ion-input type="text" placeholder=" {{ email_id | translate }} " class="input_design" id="email" ></ion-input>
+			
+			<h6 style="color:#ff5400">{{ gen | translate }}</h6>
+			<ion-radio-group (ionChange)="gender($event)">
+				<ion-row style="margin-left: -20px;">
+					<ion-col>
+						<ion-item>
+						  <ion-label>{{ male | translate }}</ion-label>
+						  <ion-radio style="--color-checked:#ff5400" slot="start" value="male"></ion-radio>
+						</ion-item>
+					</ion-col>
+					<ion-col>
+						<ion-item>
+						  <ion-label>{{ female | translate }}</ion-label>
+						  <ion-radio style="--color-checked:#ff5400" slot="start" value="female"></ion-radio>
+						</ion-item>
+					</ion-col>
+				</ion-row>
+			</ion-radio-group>
+			<div style="display:none;" id="egender">
+				<div style="color:red">* {{ gen_req | translate }}</div>
+			</div>
+			<h6 style="color:#ff5400">{{ birth_date | translate }}</h6>
+			<ion-datetime displayFormat="DD - MM - YY" placeholder="{{ birth_date | translate }}" display-timezone="utc" id="bdate" class="input_design" required></ion-datetime>
+			<div style="display:none;" id="edob">
+				<div style="color:red">* {{ birth_time_req | translate }}</div>
+			</div>
+			<h6 style="color:#ff5400">{{ birth_time | translate }}</h6>
+			<ion-datetime displayFormat="HH:mm" placeholder="{{ birth_time | translate }}" id="btime" class="input_design" required></ion-datetime>
+			<div style="display:none;" id="etime">
+				<div style="color:red">* {{ birth_time_req | translate }}</div>
+			</div>
+			<h6 style="color:#ff5400">{{ birth_place | translate }}</h6>
+			<ion-input type="text" placeholder="{{ birth_place | translate }}" class="input_design" required (ionChange)="birthplace()" id="bplace"></ion-input>
+			<div style="display:none;" id="eplace">
+				<div style="color:red">* {{ birth_place_req | translate }}</div>
+			</div>
+			<h6 style="color:#ff5400">{{ address | translate }} </h6>
+			
+			<ion-textarea style="height:60px;" type="text" placeholder="{{ address | translate }}" class="input_design" id="address" required></ion-textarea>
+			<div style="display:none;" id="eaddress">
+				<div style="color:red">* {{ address | translate }} {{ required | translate }}</div>
+			</div>
+
+			<h6 style="color:#ff5400">{{ city | translate }}</h6>
+			<ion-input type="text" placeholder=" city(state) " class="input_design" id="city" required></ion-input>
+			<div style="display:none;" id="ecity">
+				<div style="color:red">* {{ city | translate }} {{ required | translate }}</div>
+			</div>
+			<br>
+
+			<div style="text-align: center">
+				<ion-button class="book_now" type="submit" (click)="submit()">{{ next | translate }}</ion-button>
+			</div>
+			
+		</form>
+		
+	</div>
+	
+	
+</ion-content>
+

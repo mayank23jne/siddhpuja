@@ -1,0 +1,23 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-buttons slot="start">
+		  <ion-menu-button style="color:red"></ion-menu-button>
+		</ion-buttons>
+		<img *ngIf="language == 'hi' " src="assets/images/logo-2.png" class="main-logo" style="margin-top: -18px;" [routerLink]="['/home-new']">
+	  <img *ngIf="language == 'en' " src="assets/images/logo_english.png" class="main-logo" style="margin-top: -18px; width:100px;" [routerLink]="['/home-new']">
+		<!-- <ion-icon name="cart" color="danger" slot="end" style="font-size: 27px;"></ion-icon> -->
+	</ion-toolbar>
+</ion-header>
+
+<ion-content>
+	<div class="data-contain" id="detail_content">
+		<div class="container">
+			<img class="center1" *ngIf="model.image != ''" src="{{image_url}}{{model.image}}"><br>
+			<div style="color:grey">{{model.date | date:'medium'}}</div><br>
+			<h5 style="color:red;text-align:center;">{{model.title}}</h5>
+			<div class="custom_content">
+				<div class="custom_content" style="font-size: 16px;" id="noti_detail"></div> 
+			</div>  
+		</div>
+	</div>
+</ion-content>

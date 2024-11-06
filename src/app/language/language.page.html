@@ -1,0 +1,65 @@
+<ion-content *ngIf="language_key != '' ">
+<ion-header>
+  <ion-toolbar>
+    
+    <ion-buttons slot="start">
+      <ion-menu-button style="color:red"></ion-menu-button>
+    </ion-buttons>
+    <img *ngIf="language_nm == 'hi' " src="assets/images/logo-2.png" class="main-logo" style="margin-top: -18px;" [routerLink]="['/home-new']">
+	  <img *ngIf="language_nm == 'en' " src="assets/images/logo_english.png" class="main-logo" style="margin-top: -18px; width:100px;" [routerLink]="['/home-new']">
+    <!-- <ion-icon name="cart" color="danger" slot="end" style="font-size: 27px;"></ion-icon> -->
+  </ion-toolbar>
+</ion-header>
+<div class="ion-padding">
+  <div class="language_header size_18 red medium">
+    Choose Language / भाषा चुनें 
+  </div>
+
+  <ion-list lines="none"   >
+    <ion-radio-group value="{{language_key}}"  (ionChange)="select_lang($event)">
+      <ion-item *ngFor="let x of model.lang_data">
+        <ion-label>{{x.translate}} <br> <span></span></ion-label>
+        <ion-radio   slot="start" id="language_{{x.id}}" value="{{x.id}}"  (ionChange)="radioGroupChange($event)"></ion-radio>
+      </ion-item>
+    </ion-radio-group>   
+  </ion-list> 
+   
+
+</div>
+</ion-content>
+
+<ion-content *ngIf="language_key == '' ">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button style="color:red"></ion-menu-button>
+      </ion-buttons>
+      <img *ngIf="language_nm == 'hi' " src="assets/images/logo-2.png" class="main-logo" style="margin-top: -18px;" [routerLink]="['/home-new']">
+      <img *ngIf="language_nm == 'en' " src="assets/images/logo_english.png" class="main-logo" style="margin-top: -18px; width:100px;" [routerLink]="['/home-new']">
+      <!-- <ion-icon name="cart" color="danger" slot="end" style="font-size: 27px;"></ion-icon> -->
+    </ion-toolbar>
+  </ion-header>
+  <div class="ion-padding">
+    <div class="language_header size_18 red medium">
+      Choose Language / भाषा चुनें 
+    </div>
+  
+    <ion-list lines="none" >
+      <ion-radio-group value="1"  (ionChange)="select_lang($event)">
+        <ion-item *ngFor="let x of model.lang_data">
+          <ion-label>{{x.translate}}<br> <span></span></ion-label>
+          <ion-radio  slot="start" id="language_{{x.id}}" value="{{x.id}}"  (ionChange)="radioGroupChange($event)"></ion-radio>
+        </ion-item>
+      </ion-radio-group>   
+    </ion-list>   
+  </div>
+  </ion-content>
+
+  <ion-footer>
+    <ion-toolbar>    
+      <div class="app_button">
+
+      <button  class="language_btn" (click)="select_language()" >{{ next_btn | translate }}</button>
+      </div>
+    </ion-toolbar>
+  </ion-footer>
